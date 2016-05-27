@@ -9,8 +9,19 @@
   "author": "Junwei Zhao <blairzhao111@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.2",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "express3-handlebars": "^0.5.2",
-    "morgan": "^1.7.0"
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.2",
+    "zombie": "^4.2.1"
   }
 }

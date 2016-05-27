@@ -1,1 +1,295 @@
-<h1>This is root!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Welcome to Courses</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/vendor/bootstrap/css/index.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Courses</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="#contactModal" data-toggle="modal">Contact</a></li>
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#signupModal" data-toggle="modal">Sign Up</a></li>
+                  <li><a href="#loginModal" data-toggle="modal">Log In</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div id="modal">
+
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h1 class="modal-title" id="myModalLabel">Log In</h1>
+                  </div>
+                  <div class="modal-body">
+                    {{#if message}}
+                      <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <strong>Warning!</strong> {{message}}
+                      </div> 
+                    {{/if}}
+                    <form class="form col-md-12 center-block" action="/login" method="POST">
+                      <div class="form-group">
+                        <input class="form-control input-lg" placeholder="Email" type="text" name="email" required>
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control input-lg" placeholder="Password" type="password" name="password" required>
+                      </div>           
+                      <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <span>Doesn't have an account?</span>                     
+                      </div>
+                      <div class="col-md-8">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
+                      </div>
+                    </div>         
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h1 class="modal-title" id="myModalLabel">Sign Up</h1>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form col-md-12 center-block" action="/signup" method="POST">
+                      <div class="form-group row">
+                        <div class="col-md-6">
+                          <input class="form-control input-lg" placeholder="First Name" type="text" name="firstname" required>              
+                        </div>
+                        <div class="col-md-6">
+                          <input class="form-control input-lg" placeholder="Last Name" type="text" name="lastname" required>              
+                        </div>
+                      </div>                 
+                      <div class="form-group">
+                        <input class="form-control input-lg" placeholder="Email" type="text" name="email" required>
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control input-lg" placeholder="Password" type="password" name="password" required>
+                      </div>  
+                      <div class="form-group">
+                        <input class="form-control input-lg" placeholder="Verify Password" type="password" name="password_v" required>
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control input-lg" name="role">
+                          <option value="" selected disabled>Register as which role?</option>
+                          <option value="student">Student</option>
+                          <option value="instructor">Instructor</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <span>Already an Courses Member?</span>                     
+                      </div>
+                      <div class="col-md-7">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log in</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>    
+
+              <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h1>Contact</h1>
+                    </div>
+                    <div class="modal-body">
+                      <form action="" method="post">
+                        <div class="form-group">
+                          
+                        </div>
+                        <div class="form-group">
+                          
+                        </div>
+                      </form>
+
+                      <button type="submit" class="btn btn-primary btn-lg btn-block" name="">Send Message</button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>        
+
+          </div>
+
+          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                  <h1 class="modal-title" id="myModalLabel">Log In</h1>
+                </div>
+                <div class="modal-body">
+                  <form class="form col-md-12 center-block" action="/login" method="POST">
+                    <div class="form-group">
+                      <input class="form-control input-lg" placeholder="Email" type="text" name="email" required>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control input-lg" placeholder="Password" type="password" name="password" required>
+                    </div>           
+                    <div class="form-group">
+                      <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span>Doesn't have an account?</span>                     
+                    </div>
+                    <div class="col-md-8">
+                      <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
+                    </div>
+                  </div>         
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                  <h1 class="modal-title" id="myModalLabel">Sign Up</h1>
+                </div>
+                <div class="modal-body">
+                  <form class="form col-md-12 center-block" action="/signup" method="POST">
+                    <div class="form-group row">
+                      <div class="form-group col-md-6">
+                          <input class="form-control input-lg" placeholder="First Name" type="text" name="firstName">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <input class="form-control input-lg" placeholder="Last Name" type="text" name="lastName">                        
+                      </div>
+                    </div>              
+                    <div class="form-group">
+                      <input class="form-control input-lg" placeholder="Email" type="text" name="email">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control input-lg" placeholder="Password" type="password" name="password">
+                    </div>  
+                    <div class="form-group">
+                      <input class="form-control input-lg" placeholder="Verify Password" type="password" name="password_v">
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control input-lg" name="role">
+                        <option value="" selected disabled>Register as which role?</option>
+                        <option value="student">Student</option>
+                        <option value="instructor">Instructor</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <span>Already an Courses Member?</span>                     
+                    </div>
+                    <div class="col-md-7">
+                      <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log in</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Manage your courses Now!</h1>
+            <p class="lead">Courses provides fast, easy ways to manage your university courses for students and instructors.</p>
+            <p class="lead">
+              <a href="#signupModal" class="btn btn-lg btn-default" data-toggle="modal">Sign Up Now</a>
+            </p>        
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>&copy; 2016 Junwei Zhao.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="vendor/jquery-2.2.4.min.js"><\/script>')</script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
