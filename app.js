@@ -39,7 +39,7 @@ app.set('view engine', handlebars);
 //configure mongodb connections
 if(app.get('env') === "development"){
 
-	mongoose.connect(config.mongo.development.connection,config.mongo.development.options);
+/*	mongoose.connect(config.mongo.development.connection,config.mongo.development.options);
 
 	var mongodb = mongoose.connection;
 	mongodb.on('error',function(err){
@@ -47,7 +47,7 @@ if(app.get('env') === "development"){
 	});
 	mongodb.once('open', function(){
 		console.log("Mongodb is online");
-	});
+	});*/
 
 }else if(app.get('env') === 'production'){
 

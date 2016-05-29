@@ -50,65 +50,23 @@
 
           <div id="modal">
 
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+            <!--Sign Up Modal -->
+            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                    <h1 class="modal-title" id="myModalLabel">Log In</h1>
+                    <h1 class="modal-title text-primary" id="myModalLabel">Sign Up</h1>
                   </div>
                   <div class="modal-body">
-                    {{#if message}}
-                      <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                        <strong>Warning!</strong> {{message}}
-                      </div> 
-                    {{/if}}
-                    <form class="form col-md-12 center-block" action="/login" method="POST">
-                      <div class="form-group">
-                        <input class="form-control input-lg" placeholder="Email" type="text" name="email" required>
-                      </div>
-                      <div class="form-group">
-                        <input class="form-control input-lg" placeholder="Password" type="password" name="password" required>
-                      </div>           
-                      <div class="form-group">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <span>Doesn't have an account?</span>                     
-                      </div>
-                      <div class="col-md-8">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
-                      </div>
-                    </div>         
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                    <h1 class="modal-title" id="myModalLabel">Sign Up</h1>
-                  </div>
-                  <div class="modal-body">
-                    <form class="form col-md-12 center-block" action="/signup" method="POST">
+                    <form action="/join" method="POST">
                       <div class="form-group row">
                         <div class="col-md-6">
-                          <input class="form-control input-lg" placeholder="First Name" type="text" name="firstname" required>              
+                          <input class="form-control input-lg" placeholder="First Name" type="text" name="firstname" required>        
                         </div>
                         <div class="col-md-6">
-                          <input class="form-control input-lg" placeholder="Last Name" type="text" name="lastname" required>              
+                          <input class="form-control input-lg" placeholder="Last Name" type="text" name="lastname" required>         
                         </div>
                       </div>                 
                       <div class="form-group">
@@ -122,7 +80,7 @@
                       </div>
                       <div class="form-group">
                         <select class="form-control input-lg" name="role">
-                          <option value="" selected disabled>Register as which role?</option>
+                          <option value="" selected disabled>Sign up as which role?</option>
                           <option value="student">Student</option>
                           <option value="instructor">Instructor</option>
                         </select>
@@ -135,7 +93,7 @@
                   <div class="modal-footer">
                     <div class="row">
                       <div class="col-md-5">
-                        <span>Already an Courses Member?</span>                     
+                        <span class="text-danger">Already an Courses Member?</span>                     
                       </div>
                       <div class="col-md-7">
                         <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log in</button>
@@ -147,24 +105,34 @@
               </div>
             </div>    
 
-              <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel">
+              <!--Contact Modal -->
+              <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h1>Contact</h1>
+                        <h1 class="modal-title text-primary">Contact</h1>
                     </div>
                     <div class="modal-body">
-                      <form action="" method="post">
+                        <h3 class="color-black">Send message to Junwei through jzhao34@buffalo.edu</h3>
+                        <h3 class="color-black">Or</h3>
+                      <form action="/contact" method="post">
                         <div class="form-group">
-                          
+                          <h3 for="message-text" class="control-label color-black">Leave Message:</h3>
+                            {{#if message-contact}}
+                              <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                                <strong>Success:</strong> {{message-contact}}
+                              </div>
+                            {{/if}}
+                          <textarea class="form-control" id="message-text" rows="5" placeholder="Leave your message here!" 
+                          name="contactMessage"></textarea>
                         </div>
                         <div class="form-group">
-                          
+                          <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>  
                         </div>
                       </form>
-
-                      <button type="submit" class="btn btn-primary btn-lg btn-block" name="">Send Message</button>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -173,97 +141,52 @@
                 </div>
               </div>        
 
+              <!--Log In Modal -->
+              <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h1 class="modal-title text-primary">Log In</h1>
+                    </div>
+                    <div class="modal-body">
+                      {{#if message-login}}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                          <strong>Warning!</strong> {{message-login}}
+                        </div>
+                      {{/if}}
+                      <form action="/login" method="POST">
+                        <div class="form-group">
+                          <input class="form-control input-lg" placeholder="Email" type="text" name="email" required>
+                        </div>
+                        <div class="form-group">
+                          <input class="form-control input-lg" placeholder="Password" type="password" name="password" required>
+                        </div>           
+                        <div class="form-group">
+                          <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
+                        </div>
+                      </form>                      
+                    </div>
+                    <div class="modal-footer">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <span class="text-danger">Doesn't have an account?</span>                     
+                        </div>
+                        <div class="col-md-8">
+                          <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">
+                          Sign up</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+              </div>       
+
           </div>
 
-          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                  <h1 class="modal-title" id="myModalLabel">Log In</h1>
-                </div>
-                <div class="modal-body">
-                  <form class="form col-md-12 center-block" action="/login" method="POST">
-                    <div class="form-group">
-                      <input class="form-control input-lg" placeholder="Email" type="text" name="email" required>
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control input-lg" placeholder="Password" type="password" name="password" required>
-                    </div>           
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <span>Doesn't have an account?</span>                     
-                    </div>
-                    <div class="col-md-8">
-                      <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
-                    </div>
-                  </div>         
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                  <h1 class="modal-title" id="myModalLabel">Sign Up</h1>
-                </div>
-                <div class="modal-body">
-                  <form class="form col-md-12 center-block" action="/signup" method="POST">
-                    <div class="form-group row">
-                      <div class="form-group col-md-6">
-                          <input class="form-control input-lg" placeholder="First Name" type="text" name="firstName">
-                      </div>
-                      <div class="form-group col-md-6">
-                          <input class="form-control input-lg" placeholder="Last Name" type="text" name="lastName">                        
-                      </div>
-                    </div>              
-                    <div class="form-group">
-                      <input class="form-control input-lg" placeholder="Email" type="text" name="email">
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control input-lg" placeholder="Password" type="password" name="password">
-                    </div>  
-                    <div class="form-group">
-                      <input class="form-control input-lg" placeholder="Verify Password" type="password" name="password_v">
-                    </div>
-                    <div class="form-group">
-                      <select class="form-control input-lg" name="role">
-                        <option value="" selected disabled>Register as which role?</option>
-                        <option value="student">Student</option>
-                        <option value="instructor">Instructor</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <span>Already an Courses Member?</span>                     
-                    </div>
-                    <div class="col-md-7">
-                      <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log in</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                      
-                    </div>
-                  </div> 
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="inner cover">
             <h1 class="cover-heading">Manage your courses Now!</h1>
@@ -291,5 +214,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="vendor/jquery-2.2.4.min.js"><\/script>')</script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    {{#if message-login}}
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('#loginModal').modal('show');
+        });
+      </script>    
+    {{/if}}
+    {{#if message-contact}}
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('#contactModal').modal('show');
+        });
+      </script>    
+    {{/if}}
   </body>
 </html>

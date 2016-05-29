@@ -112,14 +112,6 @@ body {
 }
 
 /*
- * Modal 
- */
-#modal {
-  color: #222;
-  text-align: center 
-}
-
-/*
  * Cover
  */
 
@@ -174,4 +166,8 @@ body {
   .cover-container {
     width: 700px;
   }
+}
+
+.color-black {
+  color: #111;
 }
