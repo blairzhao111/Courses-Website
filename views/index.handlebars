@@ -60,6 +60,13 @@
                     <h1 class="modal-title text-primary" id="myModalLabel">Sign Up</h1>
                   </div>
                   <div class="modal-body">
+                    {{#if message-join}}
+                      <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <strong>Warning:</strong> {{message-join}}
+                      </div>
+                    {{/if}}
                     <form action="/join" method="POST">
                       <div class="form-group row">
                         <div class="col-md-6">
@@ -225,6 +232,13 @@
       <script type="text/javascript">
         $(document).ready(function(){
           $('#contactModal').modal('show');
+        });
+      </script>    
+    {{/if}}
+    {{#if message-join}}
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('#signupModal').modal('show');
         });
       </script>    
     {{/if}}
